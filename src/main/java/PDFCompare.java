@@ -1,7 +1,11 @@
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
 import org.apache.pdfbox.cos.COSDocument;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.fit.pdfdom.PDFDomTree;
 
 import java.io.*;
 import java.util.*;
@@ -24,16 +28,32 @@ public class PDFCompare {
 
         File file = new File(src);
 
-        PDFTextStripper
+
 
         System.out.println("file = " + file.getAbsolutePath());
+
         try {
-            PDDocument pdfDoc = PDDocument.load(file);
-            String text = new PDFTextStripper().getText(pdfDoc);
-            System.out.println("pdfDoc = " + text);
-        }catch(IOException e) {
+            Document document = new Document();
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("src/main/resources/PDF/tete1.pdf"));
+            XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream("src/main/resources/PDF/tt.html"));
+            //document.close();
+        }catch(Exception e) {
             e.printStackTrace();
         }
+
+
+
+
+//        try {
+//            PDDocument pdfDoc = PDDocument.load(file);
+//            Writer output = new PrintWriter("src/main/resources/PDF/tt.html", "utf-8");
+//            String text = new PDFTextStripper().getText(pdfDoc);
+//            new PDFDomTree().writeText(pdfDoc, output);
+//            System.out.println("pdfDoc = " + text);
+//
+//        }catch(IOException e) {
+//            e.printStackTrace();
+//        }
 
 
 

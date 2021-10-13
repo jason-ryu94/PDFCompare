@@ -16,6 +16,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation 'org.apache.pdfbox:pdfbox:2.0.22'
+    implementation 'net.sf.cssbox:pdf2dom:2.0.0'
+    implementation 'com.itextpdf.tool:xmlworker:5.5.13.1'
+    implementation 'com.itextpdf:itextpdf:5.5.13.1'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
